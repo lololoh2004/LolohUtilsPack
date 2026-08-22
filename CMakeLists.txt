@@ -15,24 +15,24 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Terminal Utils
 add_library(utils_term STATIC
-        src/_include/term.h
-        src/common.h
+        include/LoUtils/term.h
+        include/LoUtils/common.h
         src/term/base_funcs.c
         src/term/additions.c
         src/term/setup_env.c
 )
 target_include_directories(utils_term PUBLIC
         src
-        src/_include
+        include
 )
 # DLib Utils
 add_library(utils_dynlibs STATIC
         src/dynamic_libs/reg_logic.c
-        src/_include/dyn_libs.h
+        include/LoUtils/dyn_libs.h
 )
 target_include_directories(utils_dynlibs PUBLIC
         src
-        src/_include
+        include
 )
 
 

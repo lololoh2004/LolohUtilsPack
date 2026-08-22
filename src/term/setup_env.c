@@ -10,7 +10,7 @@
     #include <unistd.h>
 #endif
 
-#include "term.h"
+#include "lo_utils/term.h"
 
 
 termColorType sysTermType = TERM_DOESNT_SUPPORT_COLOR;

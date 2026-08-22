@@ -9,10 +9,8 @@ typedef enum {
 } logStatus;
 
 typedef enum {
-    TERM_SUPPORT_RGBA = 0,
-    TERM_SUPPORT_RGB,
+    TERM_SUPPORT_RGB = 0,
     TERM_SUPPORT_ANSI,
-    TERM_SUPPORT_UNICODE,
     TERM_DOESNT_SUPPORT_COLOR
 } termColorType;
 extern termColorType systemType;

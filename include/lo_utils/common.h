@@ -10,19 +10,12 @@
     #define LOUTILS_API
 #endif
 
-#include <stddef.h>
 
 typedef enum{
     TYPE_FULL    = 1 << 0,
     TYPE_BALANCE = 1 << 1,
     TYPE_OPTI    = 1 << 2
 } modePriority;
-
-// typedef enum{
-//     SYSTEM_WIN32   = 1 << 0,
-//     SYSTEM_UNIX    = 1 << 1,
-//     SYSTEM_UNKNOWN = 1 << 2
-// } systemType;
 
 typedef struct{
     unsigned char r,g,b;

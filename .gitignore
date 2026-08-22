@@ -1,3 +1,14 @@
+cmake-build-*/
+.cmake/
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+
+.idea/
+*.iws
+*.iml
+
 # Prerequisites
 *.d
 

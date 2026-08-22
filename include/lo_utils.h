@@ -4,8 +4,8 @@
 extern "C" {
 #endif
 
-#include "common.h"
-#include "term.h"
+#include "lo_utils/common.h"
+#include "lo_utils/term.h"
 
 #ifdef __cplusplus
 }

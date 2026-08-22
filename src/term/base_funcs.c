@@ -1,5 +1,5 @@
-#include "term.h"
-#include "common.h"
+#include "lo_utils/term.h"
+#include "lo_utils/common.h"
 
 #include <stdio.h>
 #include <stdlib.h>
