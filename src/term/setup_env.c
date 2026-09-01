@@ -16,10 +16,7 @@
 termColorType sysTermType = TERM_DOESNT_SUPPORT_COLOR;
 
 
-/*====================
-   VALIDATION HELPERS
-  ====================*/
-
+// VALIDATION HELPERS
 int checkHandle(void* val) {
 #ifdef _WIN32
     if (!val || val == INVALID_HANDLE_VALUE) {
@@ -42,10 +39,8 @@ int checkBool(BOOL result) {
 }
 #endif
 
-/*=====================
-   BASE SETUP FUNCTION
-  =====================*/
 
+// BASE SETUP FUNCTION
 void termSetupEnv(void){
     printf("[TERM] Enter terminal init..\n - Your term : ");
 

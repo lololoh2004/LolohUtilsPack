@@ -10,6 +10,8 @@
     #include <dlfcn.h>
     #define DL_OPEN(path) dlopen(path, RTLD_LAZY)
     #define DL_GET_PTR(h_inst, func_name) dlsym(h_inst, func_name)
+
+    #include <stddef.h>
 #endif
 
 

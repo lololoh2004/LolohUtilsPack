@@ -15,8 +15,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Terminal Utils
 add_library(utils_term STATIC
-        include/LoUtils/term.h
-        include/LoUtils/common.h
+        include/lo_utils/term.h
+        include/lo_utils/common.h
         src/term/base_funcs.c
         src/term/additions.c
         src/term/setup_env.c
@@ -28,9 +28,19 @@ target_include_directories(utils_term PUBLIC
 # DLib Utils
 add_library(utils_dynlibs STATIC
         src/dynamic_libs/reg_logic.c
-        include/LoUtils/dyn_libs.h
+        include/lo_utils/dyn_libs.h
 )
 target_include_directories(utils_dynlibs PUBLIC
+        src
+        include
+)
+# Math Utils
+add_library(utils_math STATIC
+        src/math/math.c
+        include/lo_utils/math.h
+        src/math/rand.c
+)
+target_include_directories(utils_math PUBLIC
         src
         include
 )
