@@ -49,9 +49,9 @@ LOUTILS_API void termMsg(T val, const char* entry = "???", rgb textColor = COLOR
 }
 EXTERN_C_START
 LOUTILS_API void termMsg(const char* text = "DEBUG TEXT", const char* entry = "???", rgb textColor = COLOR_DEFLT);
+LOUTILS_API void termWait(const char* text = "Press ENTER to continue..\n");
 EXTERN_C_END
 
-LOUTILS_API void termWait(const char* text = "Press ENTER to continue..\n");
 #else
 EXTERN_C_START
 LOUTILS_API void termClear(modePriority mode);
