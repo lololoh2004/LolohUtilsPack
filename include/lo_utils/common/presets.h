@@ -1,25 +1,8 @@
 #pragma once
 
-#ifdef LOUTILS_SHARED
-    #ifdef _WIN32
-        #define LOUTILS_API __declspec(dllexport)
-    #else
-        #define LOUTILS_API __attribute__((visibility("default")))
-    #endif
-#else
-    #define LOUTILS_API
-#endif
+#include "lo_utils/common/types.h"
 
-
-typedef enum{
-    TYPE_FULL    = 1 << 0,
-    TYPE_BALANCE = 1 << 1,
-    TYPE_OPTI    = 1 << 2
-} modePriority;
-
-typedef struct{
-    unsigned char r,g,b;
-} rgb;
+static const rgb COLOR_DEFLT   = {192, 192, 192};
 static const rgb COLOR_BLACK   = {0,   0,   0};
 static const rgb COLOR_RED     = {255, 0,   0};
 static const rgb COLOR_GREEN   = {0,   255, 0};

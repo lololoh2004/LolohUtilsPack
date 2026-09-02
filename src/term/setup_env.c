@@ -23,7 +23,7 @@ int checkHandle(void* val) {
 #else
     if (!val) {
 #endif
-        termMsg("Error in term setup (Invalid Handle)\n", "TERM");
+        termMsgChar("Error in term setup (Invalid Handle)\n", "TERM");
         return 0;
     }
     return 1;
@@ -32,7 +32,7 @@ int checkHandle(void* val) {
 #ifdef _WIN32
 int checkBool(BOOL result) {
     if (!result) {
-        termMsg("Error in term setup (API Failed)\n", "TERM");
+        termMsgChar("Error in term setup (API Failed)\n", "TERM");
         return 0;
     }
     return 1;

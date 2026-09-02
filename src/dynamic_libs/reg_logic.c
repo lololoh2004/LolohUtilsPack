@@ -18,7 +18,7 @@
 DL_HANDLE getDLHandle(const char* path){
     DL_HANDLE handle = handle = DL_OPEN(path);
     if (!handle){
-        termMsg("Dynamic lib handle is null!\n", "[DLIB]");
+        termMsgChar("Dynamic lib handle is null!\n", "[DLIB]");
         return NULL;
     }
     return handle;

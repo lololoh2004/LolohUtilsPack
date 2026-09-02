@@ -1,12 +1,10 @@
 #pragma once
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+#include "lo_utils/common/defines.h"
 
-#include "lo_utils/common.h"
+EXTERN_C_START
+#include "lo_utils/common/types.h"
+#include "lo_utils/common/defines.h"
+#include "lo_utils/common/presets.h"
+EXTERN_C_END
 #include "lo_utils/term.h"
-
-#ifdef __cplusplus
-}
-#endif

@@ -1,5 +1,6 @@
 #include "lo_utils/term.h"
-#include "lo_utils/common.h"
+#include "lo_utils/common/types.h"
+#include "lo_utils/common/presets.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -27,21 +28,18 @@ void termClear(modePriority mode){
     }
 }
 
-void termSetColor(rgb term_color){
+void termSetTextClr(rgb term_color){
     printf("\033[38;2;%d;%d;%dm",
         term_color.r,
         term_color.g,
         term_color.b);
 }
-
-void termMsg(const char* text, const char* entry){
-    termSetColor(COLOR_WHITE);
-    printf("[%s] : %s", entry, text);
+void termResetTextClr(void){
+    termSetTextClr(COLOR_DEFLT);
 }
-void termMsgC(const char* text, const char* entry, rgb term_color){
-    termSetColor(term_color);
+
+void termMsgChar(const char* text, const char* entry){
     printf("[%s] : %s", entry, text);
-    termSetColor(COLOR_WHITE);
 }
 
 void termWait(const char* text){
