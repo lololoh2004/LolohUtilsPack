@@ -47,11 +47,10 @@ LOUTILS_API void termMsg(T val, const char* entry = "???", rgb textColor = COLOR
     else                                            static_assert(sizeof(T) == 0, "This type isnt supported in termMsg!");
     termResetTextClr();
 }
-LOUTILS_API void termMsg(const char* text = "DEBUG TEXT", const char* entry = "???", rgb textColor = COLOR_DEFLT){
-    termSetTextClr(textColor);
-    termMsgChar(text, entry);
-    termResetTextClr();
-}
+EXTERN_C_START
+LOUTILS_API void termMsg(const char* text = "DEBUG TEXT", const char* entry = "???", rgb textColor = COLOR_DEFLT);
+EXTERN_C_END
+
 LOUTILS_API void termWait(const char* text = "Press ENTER to continue..\n");
 #else
 EXTERN_C_START

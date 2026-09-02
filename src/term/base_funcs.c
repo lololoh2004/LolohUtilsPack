@@ -50,6 +50,11 @@ void termMsgFloat(float num, const char* entry){
 void termMsgPtr(float ptr, const char* entry){
     printf("[%s] : %f\n", entry, ptr);
 }
+void termMsg(const char* text, const char* entry, rgb textColor){
+    termSetTextClr(textColor);
+    termMsgChar(text, entry);
+    termResetTextClr();
+}
 
 void termWait(const char* text){
     printf("%s", text);
