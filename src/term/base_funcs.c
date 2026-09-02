@@ -39,7 +39,16 @@ void termResetTextClr(void){
 }
 
 void termMsgChar(const char* text, const char* entry){
-    printf("[%s] : %s", entry, text);
+    printf("[%s] : %s\n", entry, text);
+}
+void termMsgInt(int num, const char* entry){
+    printf("[%s] : %d\n", entry, num);
+}
+void termMsgFloat(float num, const char* entry){
+    printf("[%s] : %F\n", entry, num);
+}
+void termMsgPtr(float ptr, const char* entry){
+    printf("[%s] : %f\n", entry, ptr);
 }
 
 void termWait(const char* text){
