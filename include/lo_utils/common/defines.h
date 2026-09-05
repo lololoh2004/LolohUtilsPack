@@ -11,9 +11,15 @@
 #endif
 
 #ifdef __cplusplus
+    #include <cstddef>
+    #include <cstdbool>
+
     #define EXTERN_C_START extern "C" {
     #define EXTERN_C_END   }
 #else
+    #include <stddef.h>
+    #include <stdbool.h>
+
     #define EXTERN_C_START
     #define EXTERN_C_END
 #endif

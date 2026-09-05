@@ -37,7 +37,6 @@ LOUTILS_API void termProgBar(void);
 EXTERN_C_END
 
 #ifdef __cplusplus
-LOUTILS_API void termClear(modePriority mode = TYPE_OPTI);
 template <typename T>
 LOUTILS_API void termMsg(T val, const char* entry = "???", rgb textColor = COLOR_DEFLT){
     termSetTextClr(textColor);
@@ -48,6 +47,7 @@ LOUTILS_API void termMsg(T val, const char* entry = "???", rgb textColor = COLOR
     termResetTextClr();
 }
 EXTERN_C_START
+LOUTILS_API void termClear(modePriority mode = TYPE_OPTI);
 LOUTILS_API void termMsg(const char* text = "DEBUG TEXT", const char* entry = "???", rgb textColor = COLOR_DEFLT);
 LOUTILS_API void termWait(const char* text = "Press ENTER to continue..\n");
 EXTERN_C_END

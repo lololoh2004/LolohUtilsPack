@@ -45,7 +45,9 @@ target_include_directories(utils_math
 
 # Parse Utils
 add_library(utils_parse STATIC
-        src/parse/arg_parse.c
+        src/parse/arg.c
+        src/parse/ini.c
+        src/parse/toml.c
 )
 target_include_directories(utils_parse
         PRIVATE src
