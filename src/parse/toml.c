@@ -30,3 +30,4 @@ size_t getTomlTableSize(const char* tomlContent, const char* name){
     }
     return size;
 }
+void fillValFromTomlTable(const char* tomlContent, const char* name){}

@@ -38,6 +38,7 @@ cmake_install.cmake
 *.lib
 
 # Executables
+app_example
 *.exe
 *.out
 *.app

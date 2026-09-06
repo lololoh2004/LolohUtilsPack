@@ -29,7 +29,6 @@ LOUTILS_API void termMsgChar(const char* text, const char* entry);
 LOUTILS_API void termMsgInt(int num, const char* entry);
 LOUTILS_API void termMsgFloat(float num, const char* entry);
 LOUTILS_API void termMsgPtr(float ptr, const char* entry);
-
 LOUTILS_API int  termGetKey(void);
 
 LOUTILS_API void termProgBar(void);
