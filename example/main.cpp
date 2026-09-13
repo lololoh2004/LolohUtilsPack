@@ -12,12 +12,20 @@ int main(int argc, char** argv){
     // termMsg(key_int, "MAIN_CXX");
 
     const char* tomlData = R"(
-        [General]
+[Graphics]
+width = 1920                # COMMENT
+fullscreen = true
+adapter = "NVIDIA GTX 4060"
+# COMMENT
+
+[User.Profile]
+name = "Ivan"
+roles = ["admin", "user", "guest"]
+    [Space_before_table]
+
     )";
-    auto fieldSize= getTomlTableSize(tomlData, "General");
-    termMsg(fieldSize);
-    auto fakeFieldSize = getTomlTableSize(tomlData, "__+Fake");
-    termMsg(fakeFieldSize);
+    auto var = getTableCount_toml(tomlData);
+    termMsg(var);
 
     return 0;
 }
