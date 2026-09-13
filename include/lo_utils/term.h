@@ -1,11 +1,6 @@
 #pragma once
 
-#ifdef __cplusplus
-#include <type_traits>
-#endif
-
 #include "common/defines.h"
-#include "common/presets.h"
 #include "common/types.h"
 
 EXTERN_C_START
@@ -33,30 +28,6 @@ LOUTILS_API int  termGetKey(void);
 
 LOUTILS_API void termProgBar(void);
 
-EXTERN_C_END
-
-#ifdef __cplusplus
-template <typename T>
-LOUTILS_API void termMsg(T val, const char* entry = "???", rgb textColor = COLOR_DEFLT){
-    termSetTextClr(textColor);
-    if constexpr (std::is_integral_v<T>)            termMsgInt(static_cast<int>(val), entry);
-    else if constexpr (std::is_floating_point_v<T>) termMsgFloat(static_cast<float>(val), entry);
-    else if constexpr (std::is_pointer_v<T>)        termMsgPtr(val, entry);
-    else                                            static_assert(sizeof(T) == 0, "This type isnt supported in termMsg!");
-    termResetTextClr();
-}
-EXTERN_C_START
-LOUTILS_API void termClear(modePriority mode = TYPE_OPTI);
-LOUTILS_API void termMsg(const char* text = "DEBUG TEXT", const char* entry = "???", rgb textColor = COLOR_DEFLT);
-LOUTILS_API void termWait(const char* text = "Press ENTER to continue..\n");
-EXTERN_C_END
-
-#else
-EXTERN_C_START
 LOUTILS_API void termClear(modePriority mode);
 LOUTILS_API void termWait(const char* text);
-
 EXTERN_C_END
-
-#endif
-

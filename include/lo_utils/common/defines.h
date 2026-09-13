@@ -1,8 +1,13 @@
 #pragma once
 
+
 #ifdef LOUTILS_SHARED
     #ifdef _WIN32
-        #define LOUTILS_API __declspec(dllexport)
+        #ifdef LOUTILS_EXPORTS
+            #define LOUTILS_API __declspec(dllexport)
+        #else
+            #define LOUTILS_API __declspec(dllimport)
+        #endif
     #else
         #define LOUTILS_API __attribute__((visibility("default")))
     #endif
