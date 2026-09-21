@@ -1,6 +1,6 @@
 #pragma once
 
-#include "common/defines.h"
+#include "../common/defines.h"
 
 #define DL_HANDLE void*
 

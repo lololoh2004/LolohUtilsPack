@@ -9,4 +9,4 @@ EXTERN_C_START
 #include "lo_utils/common/presets.h"
 EXTERN_C_END
 // Components with a cxx api
-#include "lo_utils/term.h"
+#include "lo_utils/c11/term.h"

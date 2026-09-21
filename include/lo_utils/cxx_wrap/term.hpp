@@ -1,7 +1,7 @@
 #pragma once
 
 #include <type_traits>
-#include "lo_utils/term.h"
+#include "../c11/term.h"
 #include "lo_utils/common/presets.h"
 
 namespace term{

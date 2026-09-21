@@ -1,6 +1,6 @@
 #pragma once
 
-#include "common/defines.h"
+#include "../common/defines.h"
 
 // Random
 LOUTILS_API void setRngSeed(unsigned int inSeed);

@@ -6,61 +6,56 @@ set(CMAKE_C_STANDARD_REQUIRED  ON)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(PRIVATE_SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src")
-
+set(INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include")
+set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src")
 
 # === My Lib Components ===
+option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
 
-# Term Utils
-add_library(utils_term SHARED
-        src/term/base_funcs.c
-        src/term/setup_env.c
-)
-target_include_directories(utils_term
-        PRIVATE src
-        PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include"
-)
-target_compile_definitions(utils_term PUBLIC LOUTILS_SHARED)
-target_compile_definitions(utils_term PRIVATE LOUTILS_EXPORTS)
+# === C Part ===
+file(GLOB_RECURSE C_FILES "${SRC_DIR}/*.c")
+add_library(LolohUtilsPack ${C_FILES})
 
-# DLib Utils
-add_library(utils_dynlibs SHARED
-        src/dynamic_libs/reg_logic.c
+target_include_directories(LolohUtilsPack
+        PRIVATE "${SRC_DIR}"
+        PUBLIC "${INCLUDE_DIR}"
 )
-target_link_libraries(utils_dynlibs PRIVATE utils_term)
-target_include_directories(utils_dynlibs
-        PRIVATE src
-        PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include"
-)
-target_compile_definitions(utils_term PUBLIC LOUTILS_SHARED)
-target_compile_definitions(utils_term PRIVATE LOUTILS_EXPORTS)
 
-# Math Utils
-add_library(utils_math SHARED
-        src/math/math.c
-        src/math/rand.c
-)
-target_include_directories(utils_math
-        PRIVATE src
-        PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include"
-)
-target_compile_definitions(utils_math PUBLIC LOUTILS_SHARED)
-target_compile_definitions(utils_math PRIVATE LOUTILS_EXPORTS)
+if(BUILD_SHARED_LIBS)
+    target_compile_definitions(LolohUtilsPack PUBLIC LOUTILS_SHARED)
+    target_compile_definitions(LolohUtilsPack PRIVATE LOUTILS_EXPORTS)
+endif()
 
-# Main Pack
-add_library(LolohUtilsPack INTERFACE)
 
-# Target Link
-target_link_libraries(LolohUtilsPack INTERFACE
-        utils_term
-        utils_dynlibs
-        utils_math
+# === CXX Part ===
+file(GLOB_RECURSE CPP_FILES "${SRC_DIR}/cxx20/*.cpp")
+add_library(LolohUtilsPack_cxx ${CPP_FILES})
+
+target_link_libraries(LolohUtilsPack_cxx PUBLIC LolohUtilsPack)
+
+target_include_directories(LolohUtilsPack_cxx
+        PRIVATE "${SRC_DIR}"
+        PUBLIC "${INCLUDE_DIR}"
 )
+
+if(BUILD_SHARED_LIBS)
+    target_compile_definitions(LolohUtilsPack_cxx PUBLIC LOUTILS_CXX_SHARED)
+    target_compile_definitions(LolohUtilsPack_cxx PRIVATE LOUTILS_CXX_EXPORTS)
+endif()
 
 
 # === Example ===
 if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
-    add_executable(app_example example/main.cpp
-            include/lo_utils/cxx_wrap/term.hpp)
-    target_link_libraries(app_example PRIVATE LolohUtilsPack)
+    add_executable(app_example example/main.cpp)
+
+    target_link_libraries(app_example PRIVATE LolohUtilsPack_cxx)
+
+    if(BUILD_SHARED_LIBS AND WIN32)
+        add_custom_command(TARGET app_example POST_BUILD
+                COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                $<TARGET_FILE:LolohUtilsPack>
+                $<TARGET_FILE:LolohUtilsPack_cxx>
+                $<TARGET_FILE_DIR:app_example>
+        )
+    endif()
 endif()

@@ -1,7 +1,6 @@
-#include "lo_utils.h"
 #include "lo_utils/cxx_wrap/term.hpp"
 
-int main(int argc, char** argv){
+int main(){
     termSetupEnv();
 
     term::msg();

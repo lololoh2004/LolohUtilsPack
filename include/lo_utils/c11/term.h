@@ -1,7 +1,7 @@
 #pragma once
 
-#include "common/defines.h"
-#include "common/types.h"
+#include "lo_utils/common/defines.h"
+#include "lo_utils/common/types.h"
 
 EXTERN_C_START
 typedef enum {
