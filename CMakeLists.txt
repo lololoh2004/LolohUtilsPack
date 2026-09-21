@@ -13,11 +13,16 @@ set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src")
 option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
 
 # === C Part ===
-file(GLOB_RECURSE C_FILES "${SRC_DIR}/*.c")
-add_library(LolohUtilsPack ${C_FILES})
+add_library(LolohUtilsPack
+        "${SRC_DIR}/c11/dynamic_libs/reg_logic.c"
+        "${SRC_DIR}/c11/math/math.c"
+        "${SRC_DIR}/c11/math/rand.c"
+        "${SRC_DIR}/c11/term/base_funcs.c"
+        "${SRC_DIR}/c11/term/setup_env.c"
+)
 
 target_include_directories(LolohUtilsPack
-        PRIVATE "${SRC_DIR}"
+        PRIVATE "${SRC_DIR}/c11"
         PUBLIC "${INCLUDE_DIR}"
 )
 
@@ -28,13 +33,14 @@ endif()
 
 
 # === CXX Part ===
-file(GLOB_RECURSE CPP_FILES "${SRC_DIR}/cxx20/*.cpp")
-add_library(LolohUtilsPack_cxx ${CPP_FILES})
+add_library(LolohUtilsPack_cxx
+        "${SRC_DIR}/cxx20/parse/split.cpp"
+)
 
 target_link_libraries(LolohUtilsPack_cxx PUBLIC LolohUtilsPack)
 
 target_include_directories(LolohUtilsPack_cxx
-        PRIVATE "${SRC_DIR}"
+        PRIVATE "${SRC_DIR}/cxx20"
         PUBLIC "${INCLUDE_DIR}"
 )
 
@@ -47,7 +53,6 @@ endif()
 # === Example ===
 if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
     add_executable(app_example example/main.cpp)
-
     target_link_libraries(app_example PRIVATE LolohUtilsPack_cxx)
 
     if(BUILD_SHARED_LIBS AND WIN32)
