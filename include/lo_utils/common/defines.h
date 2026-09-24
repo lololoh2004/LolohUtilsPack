@@ -34,6 +34,9 @@
 #define RETURN_SUCCESS (0)
 
 
+#define lfor(x) for(int i = 0; i < x; i++)
+
+
 #ifndef EXPORT_MACRO
     #ifdef _WIN32
         #define EXPORT_MACRO __declspec(dllexport)
