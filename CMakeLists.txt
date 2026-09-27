@@ -14,7 +14,8 @@ option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
 
 # === C Part ===
 add_library(LolohUtilsPack
-        "${SRC_DIR}/c11/dynamic_libs/reg_logic.c"
+        "${SRC_DIR}/c11/dynamic_libs/getters.c"
+        "${SRC_DIR}/c11/dynamic_libs/free.c"
         "${SRC_DIR}/c11/math/math.c"
         "${SRC_DIR}/c11/math/rand.c"
         "${SRC_DIR}/c11/term/base_funcs.c"
