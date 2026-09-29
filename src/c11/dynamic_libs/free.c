@@ -1,5 +1,5 @@
 #include "lo_utils/c11/dyn_libs.h"
-#include "lo_utils/c11/term.h"
+#include "../../../include/lo_utils/c11/term/term_sys_wrap.h"
 
 #ifdef _WIN32
     #include <windows.h>

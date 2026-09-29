@@ -20,6 +20,9 @@ add_library(LolohUtilsPack
         "${SRC_DIR}/c11/math/rand.c"
         "${SRC_DIR}/c11/term/base_funcs.c"
         "${SRC_DIR}/c11/term/setup_env.c"
+        include/lo_utils/c11/term/term_out.h
+        src/c11/term/print_funcs.c
+        include/lo_utils/c11/term/term_types.h
 )
 
 target_include_directories(LolohUtilsPack

@@ -1,7 +1,8 @@
 #pragma once
 
 #include <type_traits>
-#include "../c11/term.h"
+#include "lo_utils/c11/term/term_sys_wrap.h"
+#include "lo_utils/c11/term/term_out.h"
 #include "lo_utils/common/presets.h"
 
 namespace term{
@@ -23,11 +24,11 @@ inline void msg(const char* text = "DEBUG TEXT", const char* entry = "???", rgb 
 }
 
 inline void clear(modePriority mode = TYPE_OPTI) {
-    ::termClear(mode);
+    termClear(mode);
 }
 
 inline void wait(const char* text = "Press ENTER to continue..\n") {
-    ::termWait(text);
+    termWait(text);
 }
 
 }
