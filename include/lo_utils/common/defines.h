@@ -2,17 +2,17 @@
 
 
 #ifdef LOUTILS_SHARED
-#   ifdef _WIN32
-#       ifdef LOUTILS_EXPORTS
-#           define LOUTILS_API __declspec(dllexport)
-#       else
-#           define LOUTILS_API __declspec(dllimport)
-#       endif
-#   else
-#       define LOUTILS_API __attribute__((visibility("default")))
-#   endif
+    #ifdef _WIN32
+        #ifdef LOUTILS_EXPORTS
+            #define LOUTILS_API __declspec(dllexport)
+        #else
+            #define LOUTILS_API __declspec(dllimport)
+        #endif
+    #else
+        #define LOUTILS_API __attribute__((visibility("default")))
+    #endif
 #else
-#   define LOUTILS_API
+    #define LOUTILS_API
 #endif
 
 

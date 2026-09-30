@@ -1,5 +1,5 @@
 #include "lo_utils/c11/dyn_libs.h"
-#include "lo_utils/c11/term/term_out.h"
+#include "../../../include/lo_utils/c11/term/term_sys_wrap.h"
 
 #ifdef _WIN32
     #define WIN32_LEAN_AND_MEAN
