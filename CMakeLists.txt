@@ -9,8 +9,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include")
 set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src")
 
-# === My Lib Components ===
-option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
 
 # === C Part ===
 add_library(LolohUtilsPack
@@ -20,9 +18,9 @@ add_library(LolohUtilsPack
         "${SRC_DIR}/c11/math/rand.c"
         "${SRC_DIR}/c11/term/base_funcs.c"
         "${SRC_DIR}/c11/term/setup_env.c"
-        include/lo_utils/c11/term/term_out.h
-        src/c11/term/print_funcs.c
-        include/lo_utils/c11/term/term_types.h
+        "${SRC_DIR}/c11/term/print_funcs.c"
+        "${INCLUDE_DIR}/lo_utils/c11/term/term_out.h"
+        "${INCLUDE_DIR}/lo_utils/c11/term/term_types.h"
 )
 
 target_include_directories(LolohUtilsPack
@@ -30,7 +28,8 @@ target_include_directories(LolohUtilsPack
         PUBLIC "${INCLUDE_DIR}"
 )
 
-if(BUILD_SHARED_LIBS)
+get_target_property(LO_TYPE LolohUtilsPack TYPE)
+if(LO_TYPE STREQUAL "SHARED_LIBRARY")
     target_compile_definitions(LolohUtilsPack PUBLIC LOUTILS_SHARED)
     target_compile_definitions(LolohUtilsPack PRIVATE LOUTILS_EXPORTS)
 endif()
@@ -47,11 +46,6 @@ target_include_directories(LolohUtilsPack_cxx
         PRIVATE "${SRC_DIR}/cxx20"
         PUBLIC "${INCLUDE_DIR}"
 )
-
-if(BUILD_SHARED_LIBS)
-    target_compile_definitions(LolohUtilsPack_cxx PUBLIC LOUTILS_CXX_SHARED)
-    target_compile_definitions(LolohUtilsPack_cxx PRIVATE LOUTILS_CXX_EXPORTS)
-endif()
 
 
 # === Example ===
