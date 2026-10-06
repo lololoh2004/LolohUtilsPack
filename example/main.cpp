@@ -1,15 +1,16 @@
 #include "lo_utils/cxx_wrap/term.hpp"
+#include <string>
 
 int main(){
     termSetupEnv();
 
     term::msg();
-    term::msg("Hello World !!", "MAIN_CXX", COLOR_WHITE);
+    term::msg(std::string("Hello World !!"), "MAIN_CXX", COLOR_WHITE);
     term::msg("ERROR ERROR !!", "MAIN_CXX", COLOR_RED);
     term::msg("INFOO INFOO !!", "MAIN_CXX", COLOR_BLUE);
 
-    int key_int = termGetKey();
-    term::msg(key_int, "MAIN_CXX");
+    // int key_int = termGetKey();
+    // term::msg(key_int, "MAIN_CXX");
 
 
     return 0;

@@ -6,14 +6,21 @@
 void termMsgChar(const char* text, const char* entry){
     printf("[%s] : %s\n", entry, text);
 }
+void termMsgCharLen(const char* text, int size, const char* entry){
+    printf("[%s] : %.*s\n", entry, size, text);
+}
 void termMsgInt(int num, const char* entry){
     printf("[%s] : %d\n", entry, num);
 }
 void termMsgFloat(float num, const char* entry){
     printf("[%s] : %F\n", entry, num);
 }
-void termMsgPtr(float ptr, const char* entry){
-    printf("[%s] : %f\n", entry, ptr);
+void termMsgPtr(const void* ptr, const char* entry){
+    printf("[%s] : %p\n", entry, ptr);
+}
+
+void termMvLine(){
+    putchar('\n');
 }
 
 void termSetTextClr(rgb term_color){
