@@ -40,8 +40,31 @@ inline void clear(modePriority mode = TYPE_OPTI) {
     termClear(mode);
 }
 
+inline void mvLine(){
+    termMvLine();
+}
+
+inline void setTxtClr(rgb term_color = COLOR_DEFLT){
+    termSetTextClr(term_color);
+}
+inline void resetTxtClr(){
+    termResetTextClr();
+}
+
 inline void wait(const char* text = "Press ENTER to continue..\n") {
     termWait(text);
+}
+
+inline void setup(){
+    termSetupEnv();
+}
+
+inline int getKey(){
+    return termGetKey();
+}
+
+inline void progBar(){
+    termProgBar();
 }
 
 }
